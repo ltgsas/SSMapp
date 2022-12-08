@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ltgsas.mybatis.mapper.TdbassistanMapper">
+    <!--    插入一行数据: int insertRowOfTdbassistanForSelfIncrease(Tdbassistan tdbassistan)-->
+    <insert id="insertRowOfTdbassistanForSelfIncrease" parameterType="tdbassistan" useGeneratedKeys="true"
+            keyProperty="ID">
+        insert into tdbassistan (sname, email, number, score)
+        VALUES (#{sname, jdbcType = VARCHAR},
+                #{email, jdbcType = VARCHAR},
+                #{number, jdbcType = INTEGER},
+                #{score, jdbcType = FLOAT})
+    </insert>
+
+    <!-- 数据库支持自动生成主键`id`,多行插入: int insertMultiRowTestdb(Testdb testdb);  -->
+    <insert id="insertMultiRowTdbassistan" parameterType="tdbassistan" useGeneratedKeys="false" keyProperty="ID">
+        INSERT INTO tdbassistan (`sname`, `email`, `number`, `score`)
+        VALUES
+        <foreach item="Tdbassistan" collection="list" separator=",">(
+            #{sname, jdbcType = VARCHAR},
+            #{email, jdbcType = VARCHAR},
+            #{number, jdbcType = INTEGER},
+            #{score, jdbcType = FLOAT})
+        </foreach>
+    </insert>
+
+    <!-- 不支持自增主键 -->
+    <insert id="insertRowTdbassistanForNormal" parameterType="tdbassistan">
+        <selectKey keyProperty="id" order="AFTER" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO tdbassistan (id, `sname`, `email`, `number`, `score`)
+        VALUES (
+        #{id, jdbcType = INTEGER},
+        #{sname, jdbcType = VARCHAR},
+        #{email, jdbcType = VARCHAR},
+        #{number, jdbcType = INTEGER},
+        #{score, jdbcType = FLOAT}
+        )
+    </insert>
+
+    <!--    update 使用 Map 传递参数-->
+    <update id="updateRowOfTdbassistanForMap" parameterType="map">
+        update tdbassistan
+        set sname  = #{name},
+            email  = #{email},
+            number = #{number},
+            score  = #{score}
+        where id = #{ID}
+    </update>
+
+    <!--   update 使用注解传递参数-->
+    <update id="updateRowOfTdbassistanForAnnotation" parameterType="Tdbassistan">
+        update tdbassistan
+        set sname  = #{sname},
+            email  = #{email},
+            number = #{number},
+            score  = #{score}
+        where id = #{ID}
+    </update>
+
+    <!--    删除指定 id 行-->
+    <delete id="deleteRowOfTdbassistan" parameterType="INTEGER">
+        delete
+        from tdbassistan
+        where id = #{ID}
+    </delete>
+</mapper>
