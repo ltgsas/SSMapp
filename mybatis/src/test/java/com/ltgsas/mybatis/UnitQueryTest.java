@@ -1,7 +1,7 @@
 package com.ltgsas.mybatis;
 
-import com.ltgsas.mybatis.mapper.CasebasicMapper;
-import com.ltgsas.mybatis.pojo.Casebasic;
+import com.ltgsas.mybatis.mapper.CasebaseMapper;
+import com.ltgsas.mybatis.pojo.Casebase;
 import com.ltgsas.mybatis.utils.MybatisUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -18,8 +18,8 @@ public class UnitQueryTest {
     @Test
     public void findByColumnOnID() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        Casebasic byColumnOnID = casebasicMapper.getByColumnOnID(108);
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        Casebase byColumnOnID = casebaseMapper.getByColumnOnID(108);
         System.out.println(byColumnOnID);
         sqlSession.close();
     }
@@ -30,8 +30,8 @@ public class UnitQueryTest {
     @Test
     public void findMoreRecords() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        List<Casebasic> records = casebasicMapper.ListMoreRecordsFromCasebasic("3,5,9");
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        List<Casebase> records = casebaseMapper.ListMoreRecordsFromCasebase("3,5,9");
         records.forEach(System.out::println);
         sqlSession.close();
     }
@@ -42,9 +42,9 @@ public class UnitQueryTest {
     @Test
     public void findDynamicTable() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        List<Casebasic> casebasic = casebasicMapper.ListDynamicTable("casebasic");
-        casebasic.forEach(System.out::println);
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        List<Casebase> casebase = casebaseMapper.ListDynamicTable("casebase");
+        casebase.forEach(System.out::println);
         sqlSession.close();
     }
 
@@ -54,8 +54,8 @@ public class UnitQueryTest {
     @Test
     public void findByColumnInCname() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        List<Casebasic> listByColumnInCname = casebasicMapper.listByColumnInCname("张");
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        List<Casebase> listByColumnInCname = casebaseMapper.listByColumnInCname("张");
         listByColumnInCname.forEach(System.out::println);
         sqlSession.close();
     }
@@ -66,9 +66,9 @@ public class UnitQueryTest {
     @Test
     public void findByColumnAndValue() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        List<Casebasic> casebasicList = casebasicMapper.listByColumnAndValue("cbid", "21486566");
-        casebasicList.forEach(System.out::println);
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        List<Casebase> casebaseList = casebaseMapper.listByColumnAndValue("cbid", "21486566");
+        casebaseList.forEach(System.out::println);
         sqlSession.close();
     }
 
@@ -78,13 +78,13 @@ public class UnitQueryTest {
     @Test
     public void findByColumnUseMap() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
         HashMap<Object, Object> objectHashMap = new HashMap<>();
         objectHashMap.put("cname", "张");
         objectHashMap.put("age", 25);
-        List<Casebasic> casebasicList = casebasicMapper.listByColumnUseMap(objectHashMap);
-        for (Casebasic casebasic : casebasicList) {
-            System.out.println(casebasic);
+        List<Casebase> casebaseList = casebaseMapper.listByColumnUseMap(objectHashMap);
+        for (Casebase casebase : casebaseList) {
+            System.out.println(casebase);
         }
         sqlSession.close();
     }
@@ -95,13 +95,13 @@ public class UnitQueryTest {
     @Test
     public void findByLimitForMap() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
         HashMap<String, Integer> map = new HashMap<>();
         map.put("startIndex", 10);
         map.put("pageSize", 20);
-        List<Casebasic> casebasicList = casebasicMapper.listByLimitUseMap(map);
-        for (Casebasic casebasic : casebasicList) {
-            System.out.println(casebasic);
+        List<Casebase> casebaseList = casebaseMapper.listByLimitUseMap(map);
+        for (Casebase casebase : casebaseList) {
+            System.out.println(casebase);
         }
         sqlSession.close();
     }
@@ -115,8 +115,8 @@ public class UnitQueryTest {
         RowBounds rowBounds = new RowBounds(1, 5);
         //int start = (int) round(random()*9999);
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        List<Casebasic> casebasicList = sqlSession.selectList("com.ltgsas.mybatis.mapper.CasebasicMapper.listUseRowBounds", null, rowBounds);
-        casebasicList.forEach(System.out::println);
+        List<Casebase> casebaseList = sqlSession.selectList("com.ltgsas.mybatis.mapper.CasebaseMapper.listUseRowBounds", null, rowBounds);
+        casebaseList.forEach(System.out::println);
         System.out.println("Done >>> Testing selectByRowBounds is over!");
         sqlSession.close();
     }
@@ -127,10 +127,10 @@ public class UnitQueryTest {
     @Test
     public void findByColumnOnGrade() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        List<Casebasic> casebasicList = casebasicMapper.listByColumnOnGrade("200");
-        for (Casebasic casebasic : casebasicList) {
-            System.out.println(casebasic);
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        List<Casebase> casebaseList = casebaseMapper.listByColumnOnGrade("200");
+        for (Casebase casebase : casebaseList) {
+            System.out.println(casebase);
         }
         sqlSession.close();
     }
@@ -139,11 +139,11 @@ public class UnitQueryTest {
      * 查询单个返回值给到 Map 变量
      */
     @Test
-    public void findByIdFromCasebasicToMap() {
+    public void findByIdFromCasebaseToMap() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        Map<String, Object> casebasicByIdToMap = casebasicMapper.getByIdToMapFromCasebasic(9999);
-        System.out.println(casebasicByIdToMap);
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        Map<String, Object> casebaseByIdToMap = casebaseMapper.getByIdToMapFromCasebase(9999);
+        System.out.println(casebaseByIdToMap);
         sqlSession.close();
     }
 
@@ -151,11 +151,11 @@ public class UnitQueryTest {
      * 查询多个返回值给到 Map 变量 示例1
      */
     @Test
-    public void findAllFromCasebasicToMapOne() {
+    public void findAllFromCasebaseToMapOne() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        List<Map<String, Object>> allToMapFromCasebasic = casebasicMapper.listAllToMapFromCasebasic();
-        for (Map<String, Object> stringObjectMap : allToMapFromCasebasic) {
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        List<Map<String, Object>> allToMapFromCasebase = casebaseMapper.listAllToMapFromCasebase();
+        for (Map<String, Object> stringObjectMap : allToMapFromCasebase) {
             System.out.println(stringObjectMap);
         }
         sqlSession.close();
@@ -165,10 +165,10 @@ public class UnitQueryTest {
      * 查询多个返回值给到 Map 变量 示例2
      */
     @Test
-    public void findAllFromCasebasicToMapTwo() {
+    public void findAllFromCasebaseToMapTwo() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        CasebasicMapper casebasicMapper = sqlSession.getMapper(CasebasicMapper.class);
-        Map<String, Object> allToMap = casebasicMapper.getAllToMapFromCasebasic();
+        CasebaseMapper casebaseMapper = sqlSession.getMapper(CasebaseMapper.class);
+        Map<String, Object> allToMap = casebaseMapper.getAllToMapFromCasebase();
         System.out.println(allToMap);
         sqlSession.close();
     }

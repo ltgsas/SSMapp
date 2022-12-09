@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Casebasic {
+public class Casebase {
     private Integer ID; // Table Column name: id
     private Integer CBID; // Table Column name: cbid;
     private String cName; // Table Column name: cname;

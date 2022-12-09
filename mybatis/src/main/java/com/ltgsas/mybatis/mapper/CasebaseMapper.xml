@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ltgsas.mybatis.mapper.CasebasicMapper">
+<mapper namespace="com.ltgsas.mybatis.mapper.CasebaseMapper">
 
-    <resultMap id="casebasicExtendOneMap" type="Casebasic">
+    <resultMap id="casebaseExtendOneMap" type="Casebase">
         <id column="id" property="ID" jdbcType="INTEGER"/>
         <result column="cbid" property="CBID" jdbcType="INTEGER"/>
         <result column="cname" property="cName" jdbcType="VARCHAR"/>
@@ -37,7 +37,7 @@
         where cbid = #{cbid}
     </select>
 
-    <resultMap id="casebasicMap" type="com.ltgsas.mybatis.pojo.Casebasic">
+    <resultMap id="casebaseMap" type="com.ltgsas.mybatis.pojo.Casebase">
         <id column="id" property="ID" jdbcType="INTEGER"/>
         <result column="cbid" property="CBID" jdbcType="INTEGER"/>
         <result column="cname" property="cName" jdbcType="VARCHAR"/>
@@ -53,73 +53,73 @@
         <result column="join_date" property="joinDate" jdbcType="DATE"/>
     </resultMap>
 
-    <!--    List<Casebasic> getAllFromCasebasic();-->
-    <select id="getAllFromCasebasic" resultMap="casebasicExtendOneMap">
+    <!--    List<Casebase> getAllFromCasebase();-->
+    <select id="getAllFromCasebase" resultMap="casebaseExtendOneMap">
         select *
-        from casebasic
+        from casebase
     </select>
 
-    <!--    Casebasic getByIDFromCasebasic(int id);-->
-    <select id="getByColumnOnID" resultMap="casebasicMap">
+    <!--    Casebase getByIDFromCasebase(int id);-->
+    <select id="getByColumnOnID" resultMap="casebaseMap">
         select *
-        from casebasic
+        from casebase
         where id = #{id}
     </select>
 
-    <!--    List<Casebasic> ListMoreRecordsFromCasebasic();-->
-    <select id="ListMoreRecordsFromCasebasic" resultType="Casebasic">
+    <!--    List<Casebase> ListMoreRecordsFromCasebase();-->
+    <select id="ListMoreRecordsFromCasebase" resultType="Casebase">
         select *
-        from casebasic
+        from casebase
         where id in (${scope})
     </select>
 
-    <!--    List<Casebasic> ListDynamicTable(String tableName);-->
-    <select id="ListDynamicTable" resultType="Casebasic">
+    <!--    List<Casebase> ListDynamicTable(String tableName);-->
+    <select id="ListDynamicTable" resultType="Casebase">
         select *
         from ${tableName}
                  limit 100,5
     </select>
 
-    <!--    List<Casebasic> listByColumnInCname(String name);-->
-    <select id="listByColumnInCname" resultMap="casebasicExtendOneMap">
+    <!--    List<Casebase> listByColumnInCname(String name);-->
+    <select id="listByColumnInCname" resultMap="casebaseExtendOneMap">
         select *
-        from casebasic
+        from casebase
         where cname like concat('%', #{name}, '%');
-        <!-- select * from casebasic where cname like '%${name}%' -->
-        <!-- select * from casebasic where cname like "%"#{name}"%" -->
+        <!-- select * from casebase where cname like '%${name}%' -->
+        <!-- select * from casebase where cname like "%"#{name}"%" -->
     </select>
 
-    <!--    List<Casebasic> listCasebasicByColumnAndValue(@Param("columnName") String columnName, @Param("columnValue") String columnValue);-->
-    <select id="listByColumnAndValue" resultMap="casebasicExtendOneMap">
+    <!--    List<Casebase> listCasebaseByColumnAndValue(@Param("columnName") String columnName, @Param("columnValue") String columnValue);-->
+    <select id="listByColumnAndValue" resultMap="casebaseExtendOneMap">
         select *
-        from casebasic
+        from casebase
         where ${columnName} like concat('%', #{columnValue}, '%')
     </select>
 
-    <!--    List<Casebasic> listCasebasicByLimit(Map<String, Integer> map);-->
-    <select id="listByLimitUseMap" parameterType="map" resultMap="casebasicExtendOneMap">
+    <!--    List<Casebase> listCasebaseByLimit(Map<String, Integer> map);-->
+    <select id="listByLimitUseMap" parameterType="map" resultMap="casebaseExtendOneMap">
         select *
-        from casebasic
+        from casebase
                  limit #{startIndex},#{pageSize}
     </select>
 
     <!-- 分页查询2 : 不推荐使用 -->
-    <!--    List<Casebasic> listCasebasicByRowBounds();-->
-    <select id="listUseRowBounds" resultMap="casebasicExtendOneMap">
+    <!--    List<Casebase> listCasebaseByRowBounds();-->
+    <select id="listUseRowBounds" resultMap="casebaseExtendOneMap">
         select *
-        from casebasic
+        from casebase
     </select>
 
-    <!--    Casebasic listByColumnOnGrade(int id);-->
-    <select id="listByColumnOnGrade" resultMap="casebasicExtendOneMap">
+    <!--    Casebase listByColumnOnGrade(int id);-->
+    <select id="listByColumnOnGrade" resultMap="casebaseExtendOneMap">
         select *
-        from casebasic
+        from casebase
         where grade = #{gradeNumber}
     </select>
 
     <!--    Map<String,Object> getAllToMap();-->
-    <select id="getAllToMapFromCasebasic" resultType="map">
-        select * from casebasic limit 800,5
+    <select id="getAllToMapFromCasebase" resultType="map">
+        select * from casebase limit 800,5
     </select>
 
 </mapper>

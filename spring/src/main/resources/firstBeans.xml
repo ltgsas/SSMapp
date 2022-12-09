@@ -8,9 +8,10 @@
         <!-- collaborators and configuration for this bean go here -->
         <property name="ID" value="1"/>
         <property name="sname" value="sss"/>
-        <property name="email" value="abc@xx.com"/>
-        <property name="number" value="88"/>
-        <property name="score" value="66.55"/>
+        <property name="email" value="aa@bb.cc"/>
+    </bean>
+    <bean id="beantwo" class="com.ltgsas.spring.pojo.Tdbassistan">
+        <property name="email" value="111@qq.com"/>
     </bean>
 <!--     more bean definitions go here -->
 </beans>

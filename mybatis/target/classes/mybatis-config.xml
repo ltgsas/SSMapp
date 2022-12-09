@@ -17,7 +17,6 @@
     <typeAliases>
         <!-- 批量实体别名注册:别名是类名的驼峰命名法(规范) -->
         <package name="com.ltgsas.mybatis.pojo"/>
-        <!--        <typeAlias type="com.ltgsas.mybatis.mapper.CasebasicMapper" alias="CasebasicMapper"/>-->
     </typeAliases>
     <!--    配置分页插件-->
     <plugins>
@@ -45,7 +44,7 @@
         注册　mapper.xml 文件,推荐使用 resource 方式: 从 resource 目录下找指定的文件加载;
           使用 url/class 有限制: 1.接口及其 mapper配置文件必须"同名"并且"在同一个包下".
         -->
-        <mapper resource="com/ltgsas/mybatis/mapper/CasebasicMapper.xml"/>
+        <mapper resource="com/ltgsas/mybatis/mapper/CasebaseMapper.xml"/>
         <!--        <mapper resource="com/ltgsas/mybatis/mapper/CasescoreMapper.xml"/>-->
         <mapper resource="com/ltgsas/mybatis/mapper/TdbassistanMapper.xml"/>
     </mappers>
