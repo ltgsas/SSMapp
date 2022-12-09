@@ -10,6 +10,16 @@
     </parent>
 
     <artifactId>spring</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>spring-aop</module>
+        <module>spring_ioc</module>
+        <module>spring_di</module>
+        <module>spring_anno</module>
+        <module>spring_autowired</module>
+        <module>spring_appconfig</module>
+        <module>spring_start</module>
+    </modules>
 
     <dependencies>
         <dependency>
