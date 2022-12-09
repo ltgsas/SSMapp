@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ltgsas.mybatis.mapper.TdbassistanMapper">
-    <!--    插入一行数据: int insertRowOfTdbassistanForSelfIncrease(Tdbassistan tdbassistan)-->
-    <insert id="insertRowOfTdbassistanForSelfIncrease" parameterType="tdbassistan" useGeneratedKeys="true"
+<mapper namespace="com.ltgsas.mybatis.mapper.DbassistMapper">
+    <!--    插入一行数据: int insertRowOfDbassistForSelfIncrease(Dbassist dbassist)-->
+    <insert id="insertRowOfDbassistForSelfIncrease" parameterType="dbassist" useGeneratedKeys="true"
             keyProperty="ID">
-        insert into tdbassistan (sname, email, number, score)
+        insert into dbassist (sname, email, number, score)
         VALUES (#{sname, jdbcType = VARCHAR},
                 #{email, jdbcType = VARCHAR},
                 #{number, jdbcType = INTEGER},
@@ -14,10 +14,10 @@
     </insert>
 
     <!-- 数据库支持自动生成主键`id`,多行插入: int insertMultiRowTestdb(Testdb testdb);  -->
-    <insert id="insertMultiRowTdbassistan" parameterType="tdbassistan" useGeneratedKeys="false" keyProperty="ID">
-        INSERT INTO tdbassistan (`sname`, `email`, `number`, `score`)
+    <insert id="insertMultiRowDbassist" parameterType="dbassist" useGeneratedKeys="false" keyProperty="ID">
+        INSERT INTO dbassist (`sname`, `email`, `number`, `score`)
         VALUES
-        <foreach item="Tdbassistan" collection="list" separator=",">(
+        <foreach item="Dbassist" collection="list" separator=",">(
             #{sname, jdbcType = VARCHAR},
             #{email, jdbcType = VARCHAR},
             #{number, jdbcType = INTEGER},
@@ -26,11 +26,11 @@
     </insert>
 
     <!-- 不支持自增主键 -->
-    <insert id="insertRowTdbassistanForNormal" parameterType="tdbassistan">
+    <insert id="insertRowTdbassistanForNormal" parameterType="dbassist">
         <selectKey keyProperty="id" order="AFTER" resultType="int">
             select LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO tdbassistan (id, `sname`, `email`, `number`, `score`)
+        INSERT INTO dbassist (id, `sname`, `email`, `number`, `score`)
         VALUES (
         #{id, jdbcType = INTEGER},
         #{sname, jdbcType = VARCHAR},
@@ -41,8 +41,8 @@
     </insert>
 
     <!--    update 使用 Map 传递参数-->
-    <update id="updateRowOfTdbassistanForMap" parameterType="map">
-        update tdbassistan
+    <update id="updateRowOfDbassistForMap" parameterType="map">
+        update dbassist
         set sname  = #{name},
             email  = #{email},
             number = #{number},
@@ -51,8 +51,8 @@
     </update>
 
     <!--   update 使用注解传递参数-->
-    <update id="updateRowOfTdbassistanForAnnotation" parameterType="Tdbassistan">
-        update tdbassistan
+    <update id="updateRowOfDbassistForAnnotation" parameterType="Dbassist">
+        update dbassist
         set sname  = #{sname},
             email  = #{email},
             number = #{number},
@@ -61,9 +61,9 @@
     </update>
 
     <!--    删除指定 id 行-->
-    <delete id="deleteRowOfTdbassistan" parameterType="INTEGER">
+    <delete id="deleteRowOfDbassist" parameterType="INTEGER">
         delete
-        from tdbassistan
+        from dbassist
         where id = #{ID}
     </delete>
 </mapper>

@@ -1,23 +1,23 @@
 package com.ltgsas.mybatis.pojo;
 
-public class Tdbassistan {
+public class Dbassist {
     private Integer ID;
     private String sname;
     private String email;
     private Short number;
     private Float score;
 
-    public Tdbassistan() {
+    public Dbassist() {
     }
 
-    public Tdbassistan(String sname, String email, Short number, Float score) {
+    public Dbassist(String sname, String email, Short number, Float score) {
         this.sname = sname;
         this.email = email;
         this.number = number;
         this.score = score;
     }
 
-    public Tdbassistan(Integer ID, String sname, String email, Short number, Float score) {
+    public Dbassist(Integer ID, String sname, String email, Short number, Float score) {
         this.ID = ID;
         this.sname = sname;
         this.email = email;
@@ -67,7 +67,7 @@ public class Tdbassistan {
 
     @Override
     public String toString() {
-        return "Tdbassistan{" +
+        return "Dbassist{" +
                 "ID=" + ID +
                 ", sname='" + sname + '\'' +
                 ", email='" + email + '\'' +
